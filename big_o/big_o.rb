@@ -49,7 +49,7 @@ def lcs(arr)
 end
 
 #ANAGRAMS
-#O(n!)
+#O(nn!)
 def first_anagram?(string, anagram)
   perms = string.split("").permutation.to_a
   perms.each do |perm|
@@ -58,7 +58,7 @@ def first_anagram?(string, anagram)
 false
 end
 
-#O(n)
+#O(n^2)
 def second_anagram?(string, anagram)
 
   string.each_char do |char|
@@ -68,7 +68,7 @@ def second_anagram?(string, anagram)
   anagram.empty? 
 end
 
-#O(n)
+#O(nlogn)
 def third_anagram?(string, anagram)
   string.chars.sort == anagram.chars.sort
 end
@@ -87,5 +87,37 @@ def fourth_anagram?(string,anagram)
   hash.values.all? {|value| value == 0}
 end
 
+#TWO_SUM
 
+#O(n^2)
+def bad_two_sum?(arr, target)
+  arr.each do |el1|
+    arr.each do |el2|
+      return true if el1 + el2 == target
+    end
+  end
+  false
+end
+
+#O(nlogn)
+def okay_two_sum?(arr, target)
+  arr.each_with_index do |el, idx|
+    diff = target - el
+    result = arr[idx+1..-1].bsearch { |x| x == diff }
+    return true if !result.nil?
+  end
+  false
+end
+
+#O(n)
+def two_sum?(arr, target)
+  hash = Hash.new(nil)
+
+  arr.each do |el|
+    diff = target - el
+    return true unless hash[el].nil?
+    hash[diff] = el
+  end
+  false
+end
 
