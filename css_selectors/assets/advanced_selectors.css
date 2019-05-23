@@ -43,4 +43,52 @@ ol {
   font-weight: bold;
 }
 
+input[type="radio"] {
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  width: 27px;
+  height: 27px;
+  vertical-align: bottom;
+  background-image: url(../assets/stars.png);
+
+}
+
+input[type="radio"]:hover {
+  background-position: 0px 60px;
+}
+
+input[type="radio"]:checked {
+  background-position: 0px 30px;
+}
+
+select{
+  cursor: pointer;
+  outline: none;
+
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+}
+
+body input:last-child:hover {
+  background-color: gold;
+  -webkit-filter: brightness(90%);
+
+}
+
+ol li:nth-of-type(2n) {
+  background-color: whitesmoke;
+}
+
+section h2 + .user_review {
+  border-top: 1px solid black;
+}
+
+
+
+
+
 
