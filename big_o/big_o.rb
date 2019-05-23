@@ -47,3 +47,45 @@ def lcs(arr)
   end
   largest
 end
+
+#ANAGRAMS
+#O(n!)
+def first_anagram?(string, anagram)
+  perms = string.split("").permutation.to_a
+  perms.each do |perm|
+    return true if perm.join("") == anagram
+  end
+false
+end
+
+#O(n)
+def second_anagram?(string, anagram)
+
+  string.each_char do |char|
+    return false if anagram.index(char) == nil
+    anagram.delete!(char)
+  end
+  anagram.empty? 
+end
+
+#O(n)
+def third_anagram?(string, anagram)
+  string.chars.sort == anagram.chars.sort
+end
+
+#O(n)
+def fourth_anagram?(string,anagram)
+  hash = Hash.new(0)
+  string.each_char do |char|
+    hash[char]+=1
+  end
+
+  anagram.each_char do |char|
+    hash[char]-=1
+  end
+
+  hash.values.all? {|value| value == 0}
+end
+
+
+
